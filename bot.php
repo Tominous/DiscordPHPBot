@@ -43,6 +43,7 @@ try {
 	$bot->addCommand('voice', \Bot\Commands\JoinVoice::class, 1, 'Joins a voice channel.', '<channel-name>');
 	$bot->addCommand('play', \Bot\Commands\PlaySong::class, 1, 'Plays a song.', '<song-name>');
 	$bot->addCommand('closevoice', \Bot\Commands\CloseVoice::class, 1, 'Closes the voice connection.', '');
+	$bot->addCommand('khaled', \Bot\Commands\Khaled::class, 1, 'you special.', '');
 
 	echo "Loaded commands.\r\n";
 } catch (\Exception $e) {
