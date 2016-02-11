@@ -22,7 +22,14 @@ class Bot
 	 *
 	 * @var WebSocket 
 	 */
-	protected $websocket;
+	public $websocket;
+
+	/**
+	 * The VoiceClient instance (if applicable).
+	 *
+	 * @var VoiceClient 
+	 */
+	public $voice;
 
 	/**
 	 * The list of commands.

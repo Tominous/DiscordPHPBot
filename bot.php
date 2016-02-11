@@ -40,6 +40,9 @@ try {
 	$bot->addCommand('coinflip', \Bot\Commands\Coinflip::class, 1, 'Does a coinflip.', '');
 	$bot->addCommand('8ball', \Bot\Commands\Eightball::class, 1, 'Magic 8 Ball!', '');
 	$bot->addCommand('guilds', \Bot\Commands\Guilds::class, 1, 'Shows all the guilds.', '');
+	$bot->addCommand('voice', \Bot\Commands\JoinVoice::class, 1, 'Joins a voice channel.', '<channel-name>');
+	$bot->addCommand('play', \Bot\Commands\PlaySong::class, 1, 'Plays a song.', '<song-name>');
+	$bot->addCommand('closevoice', \Bot\Commands\CloseVoice::class, 1, 'Closes the voice connection.', '');
 
 	echo "Loaded commands.\r\n";
 } catch (\Exception $e) {

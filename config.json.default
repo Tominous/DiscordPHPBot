@@ -14,5 +14,6 @@
 		"default": "1"
 	},
 	"sudo_pass": "",
-	"supervisor_directory": ""
+	"supervisor_directory": "",
+	"music_path": ""
 }
