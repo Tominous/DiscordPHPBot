@@ -8,6 +8,7 @@ use Discord\Discord;
 use Discord\WebSockets\Event;
 use Discord\WebSockets\WebSocket;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 class Bot
 {
@@ -125,12 +126,15 @@ class Bot
 		}
 
 		$this->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) {
+			$triggers = [
+				'bless up', 'BLESS UP',
+				'khaled', 'KHALED',
+				'inspire', 'INSPIRE',
+				'jetski', 'JETSKI'
+			];
+
 			if (
-				(false !== strpos($message->content, 'bless up') ||
-				 false !== strpos($message->content, 'khaled') ||
-				 false !== strpos($message->content, 'inspire') ||
-				 false !== strpos($message->content, 'jet ski')
-				) && $message->author->id != $discord->id
+				Str::contains($message->content, $triggers) && $message->author->id != $discord->id
 			) {
 				$config = Config::getConfig($this->configfile);
 				$content = explode(' ', $message->content);
