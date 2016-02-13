@@ -45,6 +45,6 @@ class Khaled
 		}
 
 
-		$message->reply(rtrim($reply, PHP_EOL));
+		$message->channel->sendMessage(rtrim($reply, PHP_EOL));
 	}
 }

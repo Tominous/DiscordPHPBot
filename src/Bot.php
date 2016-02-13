@@ -2,6 +2,7 @@
 
 namespace Bot;
 
+use Bot\Commands\Khaled;
 use Bot\Config;
 use Discord\Discord;
 use Discord\WebSockets\Event;
@@ -111,7 +112,7 @@ class Bot
 
 					if ($user_perms >= $data['perms']) {
 						try {
-							$data['class']::handleMessage($message, $content, $discord, $config, $this);
+							$data['class']::handleMessage($message, $content, $new, $config, $this);
 						} catch (\Exception $e) {
 							$message->reply("There was an error running the command. `{$e->getMessage()}`");
 						}
@@ -122,6 +123,22 @@ class Bot
 				}
 			});
 		}
+
+		$this->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) {
+			if (
+				(false !== strpos($message->content, 'bless up') ||
+				 false !== strpos($message->content, 'khaled') ||
+				 false !== strpos($message->content, 'inspire') ||
+				 false !== strpos($message->content, 'jet ski')
+				) && $message->author->id != $discord->id
+			) {
+				$config = Config::getConfig($this->configfile);
+				$content = explode(' ', $message->content);
+				Arr::forget($content, 0);
+
+				Khaled::handleMessage($message, $content, $new, $config, $this);
+			}
+		});
 
 		$this->websocket->on('ready', function ($discord) {
 			$discord->updatePresence($this->websocket, 'DiscordPHP '.Discord::VERSION, false);

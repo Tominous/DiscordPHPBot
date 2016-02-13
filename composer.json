@@ -2,7 +2,7 @@
     "name": "david/discord-php-bot",
     "description": "An example bot that uses DiscordPHP",
     "require": {
-        "team-reflex/discord-php": "dev-voice",
+        "team-reflex/discord-php": "dev-develop",
         "symfony/var-dumper": "^3.0"
     },
     "authors": [

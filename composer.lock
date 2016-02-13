@@ -4,53 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "41de6a0d344de297da815f8abb1f507a",
-    "content-hash": "b37fdabf2d9ddbe5676b333bb8c9dfdf",
+    "hash": "29733016230e56c1f1e0a7110ac4a160",
+    "content-hash": "d1eb55a320c362795b160d6dc012395a",
     "packages": [
-        {
-            "name": "TrafficCophp/ByteBuffer",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nesQuick/ByteBuffer.git",
-                "reference": "e94e5c87c41bc79c0f738b0fa89bad11d27ae0b4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nesQuick/ByteBuffer/zipball/e94e5c87c41bc79c0f738b0fa89bad11d27ae0b4",
-                "reference": "e94e5c87c41bc79c0f738b0fa89bad11d27ae0b4",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "TrafficCophp": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ole 'nesQuick' Michaelis",
-                    "email": "ole.michaelis@googlemail.com",
-                    "homepage": "http://www.codestars.eu"
-                }
-            ],
-            "description": "Node.js inspired byte stream buffer for PHP.",
-            "keywords": [
-                "Buffer",
-                "Bytehandling",
-                "Socket",
-                "binary data",
-                "library",
-                "pack",
-                "stream",
-                "wrapper"
-            ],
-            "time": "2016-01-13 22:50:58"
-        },
         {
             "name": "cboden/ratchet",
             "version": "v0.3.4",
@@ -482,12 +438,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "581943b46d0736605e4ef4676e9a820bbfff7388"
+                "reference": "b59321a17f3e3ebc14f2bbbf73b4d065a88cf3f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/581943b46d0736605e4ef4676e9a820bbfff7388",
-                "reference": "581943b46d0736605e4ef4676e9a820bbfff7388",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/b59321a17f3e3ebc14f2bbbf73b4d065a88cf3f6",
+                "reference": "b59321a17f3e3ebc14f2bbbf73b4d065a88cf3f6",
                 "shasum": ""
             },
             "require": {
@@ -525,7 +481,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2016-01-30 02:04:34"
+            "time": "2016-02-10 14:20:03"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -633,12 +589,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "36d07ab94b9bf9c4c62ddd8a5e2966ff32f0541b"
+                "reference": "2b490d3af7583699d952033684ea35dd0cf1c4e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/36d07ab94b9bf9c4c62ddd8a5e2966ff32f0541b",
-                "reference": "36d07ab94b9bf9c4c62ddd8a5e2966ff32f0541b",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/2b490d3af7583699d952033684ea35dd0cf1c4e2",
+                "reference": "2b490d3af7583699d952033684ea35dd0cf1c4e2",
                 "shasum": ""
             },
             "require": {
@@ -680,7 +636,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "http://laravel.com",
-            "time": "2016-02-05 14:16:51"
+            "time": "2016-02-12 15:02:02"
         },
         {
             "name": "nesbot/carbon",
@@ -816,98 +772,6 @@
                 "cache"
             ],
             "time": "2014-02-02 01:11:26"
-        },
-        {
-            "name": "react/child-process",
-            "version": "v0.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/child-process.git",
-                "reference": "8bf211533bcbb2034e00528a47400367570dc3d7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/child-process/zipball/8bf211533bcbb2034e00528a47400367570dc3d7",
-                "reference": "8bf211533bcbb2034e00528a47400367570dc3d7",
-                "shasum": ""
-            },
-            "require": {
-                "evenement/evenement": "~2.0",
-                "php": ">=5.4.0",
-                "react/event-loop": "0.4.*",
-                "react/stream": "0.4.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "React\\ChildProcess\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Library for executing child processes.",
-            "keywords": [
-                "process"
-            ],
-            "time": "2014-02-02 01:11:26"
-        },
-        {
-            "name": "react/datagram",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/datagram.git",
-                "reference": "188e6034a1c362f0c874e8f29db9ec33339c84ad"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/datagram/zipball/188e6034a1c362f0c874e8f29db9ec33339c84ad",
-                "reference": "188e6034a1c362f0c874e8f29db9ec33339c84ad",
-                "shasum": ""
-            },
-            "require": {
-                "evenement/evenement": "~1.0|~2.0",
-                "php": ">=5.3",
-                "react/dns": ">=0.2, <0.5",
-                "react/event-loop": ">=0.2, <0.5",
-                "react/promise": "~2.0|~1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "React\\Datagram\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christian Lück",
-                    "email": "christian@lueck.tv"
-                }
-            ],
-            "description": "UDP datagram socket client and server for reactphp",
-            "homepage": "https://github.com/reactphp/datagram",
-            "keywords": [
-                "Socket",
-                "async",
-                "client",
-                "datagram",
-                "dgram",
-                "react",
-                "server",
-                "udp"
-            ],
-            "time": "2015-11-15 18:22:19"
         },
         {
             "name": "react/dns",
@@ -1544,16 +1408,16 @@
         },
         {
             "name": "team-reflex/discord-php",
-            "version": "dev-voice",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamreflex/DiscordPHP.git",
-                "reference": "560a59683fff95b45fe6aaffb0b8bbb2d5c766d0"
+                "reference": "b75490fae24a553b771adf4fd65d0796fceae48c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamreflex/DiscordPHP/zipball/560a59683fff95b45fe6aaffb0b8bbb2d5c766d0",
-                "reference": "560a59683fff95b45fe6aaffb0b8bbb2d5c766d0",
+                "url": "https://api.github.com/repos/teamreflex/DiscordPHP/zipball/b75490fae24a553b771adf4fd65d0796fceae48c",
+                "reference": "b75490fae24a553b771adf4fd65d0796fceae48c",
                 "shasum": ""
             },
             "require": {
@@ -1561,14 +1425,14 @@
                 "guzzlehttp/guzzle": "~5.3|~6.0",
                 "illuminate/support": "^5.1",
                 "nesbot/carbon": "^1.21",
-                "react/child-process": "^0.4.0",
-                "react/datagram": "dev-master",
-                "react/socket-client": "0.4.*",
-                "trafficcophp/bytebuffer": "dev-master"
+                "react/socket-client": "0.4.*"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5.1",
                 "symfony/var-dumper": "^2.7"
+            },
+            "suggest": {
+                "predis/predis": "Required to use the Redis cache driver."
             },
             "type": "library",
             "autoload": {
@@ -1587,7 +1451,7 @@
                 }
             ],
             "description": "An unofficial API to interact with the voice and text service Discord.",
-            "time": "2016-02-07 13:25:18"
+            "time": "2016-02-13 01:56:51"
         }
     ],
     "packages-dev": [],

@@ -44,6 +44,7 @@ try {
 	$bot->addCommand('play', \Bot\Commands\PlaySong::class, 1, 'Plays a song.', '<song-name>');
 	$bot->addCommand('closevoice', \Bot\Commands\CloseVoice::class, 1, 'Closes the voice connection.', '');
 	$bot->addCommand('khaled', \Bot\Commands\Khaled::class, 1, 'you special.', '');
+	$bot->addCommand('invite', \Bot\Commands\Invite::class, 2, 'Creates an invite for a guild.', '<guild-name>');
 
 	echo "Loaded commands.\r\n";
 } catch (\Exception $e) {
