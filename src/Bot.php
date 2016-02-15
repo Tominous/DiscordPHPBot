@@ -114,6 +114,7 @@ class Bot
 					if ($user_perms >= $data['perms']) {
 						try {
 							$data['class']::handleMessage($message, $content, $new, $config, $this);
+							echo "[Command]: {$message->author->username} {$message->author} ran command '{$config['prefix']}{$command}'\r\n";
 						} catch (\Exception $e) {
 							$message->reply("There was an error running the command. `{$e->getMessage()}`");
 						}
