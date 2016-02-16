@@ -31,6 +31,8 @@ class JoinVoice
 
 		if (is_null($channel)) {
 			$message->reply('Couldn\'t find that channel!');
+
+			return;
 		}
 
 		$bot->websocket->joinVoiceChannel($channel)->then(

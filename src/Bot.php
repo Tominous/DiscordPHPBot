@@ -129,14 +129,15 @@ class Bot
 
 		$this->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) {
 			$triggers = [
-				'bless up', 'BLESS UP',
-				'khaled', 'KHALED',
-				'inspire', 'INSPIRE',
-				'jetski', 'JETSKI'
+				'bless up',
+				'khaled',
+				'inspire',
+				'jetski',
+				'jet ski',
 			];
 
 			if (
-				Str::contains($message->content, $triggers) && $message->author->id != $discord->id
+				Str::contains(strtolower($message->content), $triggers) && $message->author->id != $discord->id
 			) {
 				$config = Config::getConfig($this->configfile);
 				$content = explode(' ', $message->content);
