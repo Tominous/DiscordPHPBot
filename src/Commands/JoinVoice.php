@@ -44,6 +44,10 @@ class JoinVoice
 					$message->channel->sendMessage("**stderr:** {$message}");
 				});
 
+				$vc->on('ws-ping', function ($t) {
+					echo "WS Ping: {$t}ms\r\n";
+				});
+
 				$bot->voice = $vc;
 			},
 			// Joining failed!
