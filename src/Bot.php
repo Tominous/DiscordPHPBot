@@ -88,14 +88,14 @@ class Bot
 	 */
 	public function start()
 	{
-		set_error_handler(function ($errno, $errstr) {
-			if (!(error_reporting() & $errno)) {
-				return;
-			}
+		// set_error_handler(function ($errno, $errstr) {
+		// 	if (!(error_reporting() & $errno)) {
+		// 		return;
+		// 	}
 
-			echo "[Error] {$errno} {$errstr}\r\n";
-			throw new \Exception($errstr, $errno);
-		}, E_ALL);
+		// 	echo "[Error] {$errno} {$errstr}\r\n";
+		// 	throw new \Exception($errstr, $errno);
+		// }, E_ALL);
 
 		foreach ($this->commands as $command => $data) {
 			$this->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) use ($command, $data) {
@@ -129,11 +129,7 @@ class Bot
 
 		$this->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) {
 			$triggers = [
-				'bless up',
-				'khaled',
-				'inspire',
-				'jetski',
-				'jet ski',
+				'bless up'
 			];
 
 			if (
