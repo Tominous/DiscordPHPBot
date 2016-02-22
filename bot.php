@@ -1,5 +1,6 @@
 <?php
 
+ini_set('memory_limit', '-1');
 define('DISCORDPHP_STARTTIME', microtime(true));
 
 use Bot\Bot;

@@ -420,12 +420,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "8c033e192fdcddb3067ca77e0b6829e910ecdd7d"
+                "reference": "739b9c8378c462943c42fee5353453ab4164ed8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/8c033e192fdcddb3067ca77e0b6829e910ecdd7d",
-                "reference": "8c033e192fdcddb3067ca77e0b6829e910ecdd7d",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/739b9c8378c462943c42fee5353453ab4164ed8e",
+                "reference": "739b9c8378c462943c42fee5353453ab4164ed8e",
                 "shasum": ""
             },
             "require": {
@@ -474,7 +474,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2016-01-31 00:19:49"
+            "time": "2016-02-17 21:09:10"
         },
         {
             "name": "guzzlehttp/promises",
@@ -529,16 +529,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "f5d04bdd2881ac89abde1fb78cc234bce24327bb"
+                "reference": "2e89629ff057ebb49492ba08e6995d3a6a80021b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5d04bdd2881ac89abde1fb78cc234bce24327bb",
-                "reference": "f5d04bdd2881ac89abde1fb78cc234bce24327bb",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/2e89629ff057ebb49492ba08e6995d3a6a80021b",
+                "reference": "2e89629ff057ebb49492ba08e6995d3a6a80021b",
                 "shasum": ""
             },
             "require": {
@@ -583,7 +583,7 @@
                 "stream",
                 "uri"
             ],
-            "time": "2016-01-23 01:23:02"
+            "time": "2016-02-18 21:54:00"
         },
         {
             "name": "illuminate/contracts",
@@ -591,12 +591,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "1690782764872b6953e2db691fbee3067305da1a"
+                "reference": "12209a968de18e05abbead5e8b9fc8ce2a9727de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/1690782764872b6953e2db691fbee3067305da1a",
-                "reference": "1690782764872b6953e2db691fbee3067305da1a",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/12209a968de18e05abbead5e8b9fc8ce2a9727de",
+                "reference": "12209a968de18e05abbead5e8b9fc8ce2a9727de",
                 "shasum": ""
             },
             "require": {
@@ -625,7 +625,7 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "http://laravel.com",
-            "time": "2016-01-10 17:54:16"
+            "time": "2016-02-16 14:18:43"
         },
         {
             "name": "illuminate/support",
@@ -633,12 +633,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "2b490d3af7583699d952033684ea35dd0cf1c4e2"
+                "reference": "ee541261e288205bf7191b6458edeb0f9e3ab756"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/2b490d3af7583699d952033684ea35dd0cf1c4e2",
-                "reference": "2b490d3af7583699d952033684ea35dd0cf1c4e2",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/ee541261e288205bf7191b6458edeb0f9e3ab756",
+                "reference": "ee541261e288205bf7191b6458edeb0f9e3ab756",
                 "shasum": ""
             },
             "require": {
@@ -680,7 +680,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "http://laravel.com",
-            "time": "2016-02-12 15:02:02"
+            "time": "2016-02-19 16:55:30"
         },
         {
             "name": "nesbot/carbon",
@@ -814,47 +814,6 @@
             "description": "Async caching.",
             "keywords": [
                 "cache"
-            ],
-            "time": "2014-02-02 01:11:26"
-        },
-        {
-            "name": "react/child-process",
-            "version": "v0.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/child-process.git",
-                "reference": "8bf211533bcbb2034e00528a47400367570dc3d7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/child-process/zipball/8bf211533bcbb2034e00528a47400367570dc3d7",
-                "reference": "8bf211533bcbb2034e00528a47400367570dc3d7",
-                "shasum": ""
-            },
-            "require": {
-                "evenement/evenement": "~2.0",
-                "php": ">=5.4.0",
-                "react/event-loop": "0.4.*",
-                "react/stream": "0.4.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "React\\ChildProcess\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Library for executing child processes.",
-            "keywords": [
-                "process"
             ],
             "time": "2014-02-02 01:11:26"
         },
@@ -1235,12 +1194,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "843569823e776da5727ef547b2a78a5977979972"
+                "reference": "1a764fc996e92f1877569923a135a6b80884fb1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/843569823e776da5727ef547b2a78a5977979972",
-                "reference": "843569823e776da5727ef547b2a78a5977979972",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/1a764fc996e92f1877569923a135a6b80884fb1c",
+                "reference": "1a764fc996e92f1877569923a135a6b80884fb1c",
                 "shasum": ""
             },
             "require": {
@@ -1279,7 +1238,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2016-02-13 09:24:02"
+            "time": "2016-02-18 09:00:40"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1548,12 +1507,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamreflex/DiscordPHP.git",
-                "reference": "b2ca6cf478a0c108af8603a7d90a1afdd382dccd"
+                "reference": "85ffb8b717463abe15a116c7e677d12a769f9ed0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamreflex/DiscordPHP/zipball/b2ca6cf478a0c108af8603a7d90a1afdd382dccd",
-                "reference": "b2ca6cf478a0c108af8603a7d90a1afdd382dccd",
+                "url": "https://api.github.com/repos/teamreflex/DiscordPHP/zipball/85ffb8b717463abe15a116c7e677d12a769f9ed0",
+                "reference": "85ffb8b717463abe15a116c7e677d12a769f9ed0",
                 "shasum": ""
             },
             "require": {
@@ -1561,7 +1520,6 @@
                 "guzzlehttp/guzzle": "~5.3|~6.0",
                 "illuminate/support": "^5.1",
                 "nesbot/carbon": "^1.21",
-                "react/child-process": "^0.4.0",
                 "react/datagram": "dev-master",
                 "react/socket-client": "0.4.*",
                 "trafficcophp/bytebuffer": "dev-master"
@@ -1590,7 +1548,7 @@
                 }
             ],
             "description": "An unofficial API to interact with the voice and text service Discord.",
-            "time": "2016-02-15 03:41:11"
+            "time": "2016-02-22 00:31:54"
         }
     ],
     "packages-dev": [],
