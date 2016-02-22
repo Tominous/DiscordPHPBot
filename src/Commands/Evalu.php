@@ -19,6 +19,15 @@ class Evalu
 		if (!isset($params[1])) {
 			return;
 		}
+
+		set_error_handler(function ($errno, $errstr) {
+			if (!(error_reporting() & $errno)) {
+				return;
+			}
+
+			echo "[Eval Error] {$errno} {$errstr}\r\n";
+			throw new \Exception($errstr, $errno);
+		}, E_ALL);
 		
 		try {
 			eval('$response = '.implode(' ', $params).';');
@@ -33,5 +42,8 @@ class Evalu
 		} catch (\Exception $e) {
 			$message->reply("Eval failed. {$e->getMessage()}");
 		}
+
+
+		restore_error_handler();
 	}
 }
