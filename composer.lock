@@ -633,12 +633,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "ee541261e288205bf7191b6458edeb0f9e3ab756"
+                "reference": "d16a2083264419596430bfeacc6546c69d8e6a97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/ee541261e288205bf7191b6458edeb0f9e3ab756",
-                "reference": "ee541261e288205bf7191b6458edeb0f9e3ab756",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/d16a2083264419596430bfeacc6546c69d8e6a97",
+                "reference": "d16a2083264419596430bfeacc6546c69d8e6a97",
                 "shasum": ""
             },
             "require": {
@@ -680,7 +680,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "http://laravel.com",
-            "time": "2016-02-19 16:55:30"
+            "time": "2016-02-23 04:08:28"
         },
         {
             "name": "nesbot/carbon",
@@ -1044,12 +1044,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket-client.git",
-                "reference": "0460210df73dc2867b7b3c65a75575d0bf5eee86"
+                "reference": "1cc368ed54fd596a9084c835e79986ff339870db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/0460210df73dc2867b7b3c65a75575d0bf5eee86",
-                "reference": "0460210df73dc2867b7b3c65a75575d0bf5eee86",
+                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/1cc368ed54fd596a9084c835e79986ff339870db",
+                "reference": "1cc368ed54fd596a9084c835e79986ff339870db",
                 "shasum": ""
             },
             "require": {
@@ -1078,7 +1078,7 @@
             "keywords": [
                 "Socket"
             ],
-            "time": "2015-11-21 12:03:35"
+            "time": "2016-02-23 00:35:04"
         },
         {
             "name": "react/stream",
@@ -1507,12 +1507,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamreflex/DiscordPHP.git",
-                "reference": "103b335c2084106865449a41e86a3a622312f59a"
+                "reference": "a5b0411cc74a0374c6c9e598591fd628113edd43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamreflex/DiscordPHP/zipball/103b335c2084106865449a41e86a3a622312f59a",
-                "reference": "103b335c2084106865449a41e86a3a622312f59a",
+                "url": "https://api.github.com/repos/teamreflex/DiscordPHP/zipball/a5b0411cc74a0374c6c9e598591fd628113edd43",
+                "reference": "a5b0411cc74a0374c6c9e598591fd628113edd43",
                 "shasum": ""
             },
             "require": {
@@ -1548,7 +1548,7 @@
                 }
             ],
             "description": "An unofficial API to interact with the voice and text service Discord.",
-            "time": "2016-02-22 07:17:38"
+            "time": "2016-02-23 08:01:49"
         }
     ],
     "packages-dev": [],

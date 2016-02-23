@@ -153,6 +153,7 @@ class Bot
 
 		$this->websocket->on('close', function ($op) {
 			echo "[Close] WebSocket was closed. Opcode {$op}\r\n";
+			dump($op);
 			$diff = microtime(true) - DISCORDPHP_STARTTIME;
 
 			echo "{$diff} seconds since start of bot.\r\n";
