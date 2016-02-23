@@ -151,8 +151,8 @@ class Bot
 			echo "[Error] {$error}\r\n";
 		});
 
-		$this->websocket->on('close', function () {
-			echo "[Close] WebSocket was closed.\r\n";
+		$this->websocket->on('close', function ($op) {
+			echo "[Close] WebSocket was closed. Opcode {$op}\r\n";
 			die;
 		});
 
