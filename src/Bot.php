@@ -129,7 +129,9 @@ class Bot
 
 		$this->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) {
 			$triggers = [
-				'bless up'
+				'bless up',
+				':pray:',
+				'🙏'
 			];
 
 			if (
