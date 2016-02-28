@@ -41,7 +41,7 @@ class JoinVoice
 				$message->reply("Joined voice channel.");
 
 				$vc->on('stderr', function ($data) use ($message) {
-					$message->channel->sendMessage("**stderr:** {$message}");
+					$message->channel->sendMessage("**stderr:** {$data}");
 				});
 
 				$vc->on('ws-ping', function ($t) {
