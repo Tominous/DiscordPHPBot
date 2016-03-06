@@ -2,6 +2,8 @@
 
 namespace Bot\Commands;
 
+use Discord\Exceptions\DiscordRequestFailedException;
+
 class Khaled
 {
 	/**
@@ -46,7 +48,10 @@ class Khaled
 			unset($quotes[$key]);
 		}
 
-
-		$message->channel->sendMessage(rtrim($reply, PHP_EOL));
+		try {
+			$message->channel->sendMessage(rtrim($reply, PHP_EOL));
+		} catch (DiscordRequestFailedException $e) {
+			echo "Couldn't bless up: {$e->getMessage()}\r\n";
+		}
 	}
 }
