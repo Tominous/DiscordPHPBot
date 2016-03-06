@@ -41,7 +41,9 @@ class Khaled
 		];
 
 		for ($i = 0; $i < 3; $i++) {
-			$reply .= $quotes[array_rand($quotes)].PHP_EOL;
+			$key = array_rand($quotes);
+			$reply .= $quotes[$key].PHP_EOL;
+			unset($quotes[$key]);
 		}
 
 
