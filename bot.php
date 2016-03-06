@@ -53,10 +53,5 @@ try {
 	die(1);
 }
 
-try {
-	echo "Starting the bot...\r\n";
-	$bot->start();
-} catch (\Exception $e) {
-	echo "Error while running or starting the bot. {$e->getMessage()}\r\n";
-	die(1);
-}
+echo "Starting the bot...\r\n";
+$bot->start();
