@@ -162,6 +162,8 @@ class Bot
 			dump($op);
 			$diff = microtime(true) - DISCORDPHP_STARTTIME;
 
+			dump($op);
+
 			echo "{$diff} seconds since start of bot.\r\n";
 			echo "Currnet time: ".microtime(true)."\r\n";
 			die;
