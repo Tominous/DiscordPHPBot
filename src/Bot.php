@@ -157,8 +157,9 @@ class Bot
 		// 	echo "Heartbeat at {$epoch}\r\n";
 		// });
 
-		$this->websocket->on('close', function ($op) {
+		$this->websocket->on('close', function ($op, $reason) {
 			echo "[Close] WebSocket was closed. Opcode {$op}\r\n";
+			echo "Reason: {$reason}\r\n";
 			dump($op);
 		});
 
