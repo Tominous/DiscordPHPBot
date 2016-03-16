@@ -21,7 +21,7 @@ class CloseVoice
 			return;
 		}
 
-		$bot->voice->leave();
+		$bot->voice->close();
 		$message->reply('Leaving voice channel...');
 	}
 }
