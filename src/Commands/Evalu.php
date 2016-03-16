@@ -34,6 +34,7 @@ class Evalu
 
 			if (strpos(strtolower($params), 'sudo') !== false) {
 				$message->reply('no sudo fgt');
+				return;
 			}
 
 			eval('$response = '.$params.';');
