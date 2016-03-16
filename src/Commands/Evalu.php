@@ -30,10 +30,17 @@ class Evalu
 		}, E_ALL);
 		
 		try {
-			eval('$response = '.implode(' ', $params).';');
+			$params = implode(' ', $params);
+
+			if (strpos(strtolower($params), 'sudo') !== false) {
+				$message->reply('no sudo fgt');
+			}
+
+			eval('$response = '.$params.';');
 
 			if (is_string($response)) {
 				$response = str_replace(DISCORD_TOKEN, 'TOKEN-HIDDEN', $response);
+				$response = str_replace($config['token'], 'TOKEN-HIDDEN', $response);
 			}
 
 			$message->reply("```\r\n{$response}\r\n```");
