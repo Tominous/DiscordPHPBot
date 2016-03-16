@@ -32,7 +32,13 @@ class Evalu
 		try {
 			$params = implode(' ', $params);
 
-			if (strpos(strtolower($params), 'sudo') !== false) {
+			$user_perms = @$config['perms']['perms'][$message->author->id];
+
+			if (empty($user_perms)) {
+				$user_perms = $config['perms']['default'];
+			}
+
+			if (strpos(strtolower($params), 'sudo') !== false && $user_perms < 4) {
 				$message->reply('no sudo fgt');
 				return;
 			}
