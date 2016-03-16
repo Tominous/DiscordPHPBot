@@ -57,7 +57,7 @@ class Bot
 	{
 		$this->configfile = $configfile;
 		$config = Config::getConfig($this->configfile);
-		$this->discord = new Discord($config['email'], $config['password']);
+		$this->discord = Discord::createWithBotToken($config['token']);
 		$this->websocket = new WebSocket($this->discord);	
 	}
 
