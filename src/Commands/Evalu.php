@@ -41,6 +41,16 @@ class Evalu
 
 			file_put_contents($fileName, $params);
 
+			// lint
+			$lint = shell_exec('php -l '.$fileName);
+
+			if (strpos($lint, 'Errors parsing') !== false) {
+				$message->reply("Erorrs linting the file: ```{$lint}```");
+
+				restore_error_handler();
+				return;
+			}
+
 			$response = require_once $fileName;
 
 			if (is_string($response)) {
