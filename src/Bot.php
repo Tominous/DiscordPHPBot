@@ -181,9 +181,8 @@ class Bot
 			echo "Reconnected\r\n";
 		});
 
+		$config = Config::getConfig($this->configfile);
 		if ($config['cache'] == 'redis') {
-			$redis = $config['redis'];
-
 			Cache::setCache(new RedisCacheDriver('localhost'));
 		}
 
