@@ -2,6 +2,7 @@
 
 ini_set('memory_limit', '-1');
 define('DISCORDPHP_STARTTIME', microtime(true));
+define('BOT_DIR', __DIR__);
 
 use Bot\Bot;
 use Bot\Config;

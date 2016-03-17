@@ -99,7 +99,16 @@ class Bot
 
 		foreach ($this->commands as $command => $data) {
 			$this->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) use ($command, $data) {
+				$parts = [];
 				$content = explode(' ', $message->content);
+
+				foreach ($content as $index => $c) {
+					foreach (explode("\n", $c) as $p) {
+						$parts[] = $p;
+					}
+				}
+
+				$content = $parts;
 
 				$config = Config::getConfig($this->configfile);
 

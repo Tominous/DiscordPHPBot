@@ -2,6 +2,8 @@
 
 namespace Bot\Commands;
 
+use Illuminate\Support\Str;
+
 class Evalu
 {
 	/**
@@ -31,19 +33,15 @@ class Evalu
 		
 		try {
 			$params = implode(' ', $params);
+			$params = str_replace('```', '', $params);
+			$params = "<?php\r\n".$params;
+			dump($params);
 
-			$user_perms = @$config['perms']['perms'][$message->author->id];
+			$fileName = BOT_DIR.'/eval/'.Str::random();
 
-			if (empty($user_perms)) {
-				$user_perms = $config['perms']['default'];
-			}
+			file_put_contents($fileName, $params);
 
-			if (strpos(strtolower($params), 'sudo') !== false && $user_perms < 4) {
-				$message->reply('no sudo fgt');
-				return;
-			}
-
-			eval('$response = '.$params.';');
+			$response = require_once $fileName;
 
 			if (is_string($response)) {
 				$response = str_replace(DISCORD_TOKEN, 'TOKEN-HIDDEN', $response);
