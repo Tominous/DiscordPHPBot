@@ -160,7 +160,14 @@ class Bot
 		$this->websocket->on('close', function ($op, $reason) {
 			echo "[Close] WebSocket was closed. Opcode {$op}\r\n";
 			echo "Reason: {$reason}\r\n";
-			dump($op);
+		});
+
+		$this->websocket->on('reconnect', function () {
+			echo "Reconnecting\r\n";
+		});
+
+		$this->websocket->on('reconnected', function () {
+			echo "Reconnected\r\n";
 		});
 
 		$this->websocket->run();
