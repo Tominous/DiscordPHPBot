@@ -4,6 +4,8 @@ namespace Bot;
 
 use Bot\Commands\Khaled;
 use Bot\Config;
+use Discord\Cache\Cache;
+use Discord\Cache\Drivers\RedisCacheDriver;
 use Discord\Discord;
 use Discord\WebSockets\Event;
 use Discord\WebSockets\WebSocket;
@@ -178,6 +180,12 @@ class Bot
 		$this->websocket->on('reconnected', function () {
 			echo "Reconnected\r\n";
 		});
+
+		if ($config['cache'] == 'redis') {
+			$redis = $config['redis'];
+
+			Cache::setCache(new RedisCacheDriver('localhost'));
+		}
 
 		$this->websocket->run();
 	}
