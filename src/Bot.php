@@ -99,8 +99,10 @@ class Bot
 		// 	throw new \Exception($errstr, $errno);
 		// }, E_ALL);
 
-		foreach ($this->commands as $command => $data) {
-			$this->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) use ($command, $data) {
+		$this->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) {
+			$config = Config::getConfig($this->configfile);
+
+			foreach ($this->commands as $command => $data) {
 				$parts = [];
 				$content = explode(' ', $message->content);
 
@@ -111,8 +113,6 @@ class Bot
 				}
 
 				$content = $parts;
-
-				$config = Config::getConfig($this->configfile);
 
 				if ($content[0] == $config['prefix'] . $command) {
 					Arr::forget($content, 0);
@@ -135,8 +135,8 @@ class Bot
 						echo "[Auth] User {$message->author->username} blocked from running {$config['prefix']}{$command}, <@{$message->author->id}>\r\n";
 					}
 				}
-			});
-		}
+			}
+		});
 
 		$this->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) {
 			$triggers = [
