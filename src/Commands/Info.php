@@ -38,9 +38,9 @@ class Info
 
 		$str .= "**OS Info:** ".php_uname()."\r\n";
 
-		$str .= "**Source:** https://github.com/uniquoooo/DiscordPHPBot\r\n";
+		$str .= "**Source:** <https://github.com/uniquoooo/DiscordPHPBot>\r\n";
 
-		$str .= "\r\n**Author:** Uniquoooo `<@78703938047582208>`\r\n";
+		$str .= "\r\n**Author:** David#9512 `78703938047582208`\r\n";
 		$str .= "**Server Count:** {$discord->guilds->count()}\r\n";
 
 		$message->reply($str);	
