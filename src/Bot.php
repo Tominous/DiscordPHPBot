@@ -139,7 +139,7 @@ class Bot
 					if ($user_perms >= $data['perms']) {
 						try {
 							$data['class']::handleMessage($message, $content, $new, $config, $this);
-							$this->log->addDebug("{$message->author->username}#{$message->author->discriminator} ({$message->author}) ran command {$config['prefix']}{$command}", $content);
+							$this->log->addInfo("{$message->author->username}#{$message->author->discriminator} ({$message->author}) ran command {$config['prefix']}{$command}", $content);
 						} catch (\Exception $e) {
 							try {
 								$this->log->addError("Error running the command {$config['prefix']}{$command}", ['message' => $e->getMessage()]);
