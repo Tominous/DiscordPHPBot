@@ -1338,12 +1338,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamreflex/DiscordPHP.git",
-                "reference": "da1add67b5041bc85fee0a5db82732ecf40b5f2d"
+                "reference": "96e82be4aa402c48381a9898e540eb8e824002fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamreflex/DiscordPHP/zipball/da1add67b5041bc85fee0a5db82732ecf40b5f2d",
-                "reference": "da1add67b5041bc85fee0a5db82732ecf40b5f2d",
+                "url": "https://api.github.com/repos/teamreflex/DiscordPHP/zipball/96e82be4aa402c48381a9898e540eb8e824002fa",
+                "reference": "96e82be4aa402c48381a9898e540eb8e824002fa",
                 "shasum": ""
             },
             "require": {
@@ -1382,7 +1382,7 @@
                 }
             ],
             "description": "An unofficial API to interact with the voice and text service Discord.",
-            "time": "2016-03-24 21:42:37"
+            "time": "2016-03-25 05:43:10"
         }
     ],
     "packages-dev": [],

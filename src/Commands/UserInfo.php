@@ -19,7 +19,7 @@ class UserInfo
 	 */
 	public static function handleMessage($message, $params, $discord, $config)
 	{
-		$id = (isset($params[1])) ? $params[1] : $message->author->id;
+		$id = (isset($params[0])) ? $params[0] : $message->author->id;
 
 		if (preg_match('/<@(.+)>/', $id, $matches)) {
 			$id = $matches[1];

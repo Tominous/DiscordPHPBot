@@ -17,9 +17,9 @@ class SetLevel
 	 */
 	public static function handleMessage($message, $params, $discord, $config)
 	{
-		if (isset($params[1])) {
-			$user = $params[1];
-			$level = (isset($params[2])) ? $params[2] : 2;
+		if (isset($params[0])) {
+			$user = $params[0];
+			$level = (isset($params[1])) ? $params[1] : 2;
 
 			if (preg_match('/<@([0-9]+)>/', $user, $matches)) {
 				$user = $matches[1];

@@ -18,7 +18,7 @@ class Invite
 	 */
 	public static function handleMessage($message, $params, $discord, $config, $bot)
 	{
-		if (!isset($params[1])) {
+		if (!isset($params[0])) {
 			$message->reply('Please pass through a guild name.');
 			return;
 		}

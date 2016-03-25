@@ -17,7 +17,7 @@ class SetPrefix
 	 */
 	public static function handleMessage($message, $params, $discord, $config)
 	{
-		$prefix = (isset($params[1])) ? $params[1] : $config['prefix'];
+		$prefix = (isset($params[0])) ? $params[0] : $config['prefix'];
 		$config['prefix'] = $prefix;
 		Config::saveConfig($config, $config['filename']);
 

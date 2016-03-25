@@ -18,7 +18,7 @@ class PlaySong
 	 */
 	public static function handleMessage($message, $params, $discord, $config, $bot)
 	{
-		if (!isset($params[1])) {
+		if (!isset($params[0])) {
 			$str = "Please provide a song:\r\n";
 
 			foreach (glob($config['music_path'].'/*') as $song) {
