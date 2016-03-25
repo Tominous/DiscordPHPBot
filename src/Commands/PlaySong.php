@@ -25,51 +25,62 @@ class PlaySong
 				$str .= "	{$song}\r\n";
 			}
 
-			$message->reply($str);
+			if (strlen($str) > 2000) {
+				$chunks = str_split($str, 1800);
+
+				$chunk = array_shift($chunks);
+				$message->reply($chunk);
+
+				foreach ($chunks as $chunk) {
+					$message->channel->sendMessage($chunk);
+				}
+			} else {
+				$message->reply($str);
+			}
 
 			return;
 		}
 
 		$params = implode(' ', $params);
 
-		if (!isset($bot->voice)) {
-			$message->reply("Please run {$config['prefix']}voice before you try to play a song.");
-			return;
-		}
-
 		if (!file_exists($config['music_path'].'/'.$params)) {
 			$message->reply('The file '.$config['music_path'].'/'.$params.' does not exist!');
 			return;
 		}
 
-		$message->reply('Playing song...');
-		$bot->voice->playFile($config['music_path'].'/'.$params)->then(
-			// Success
-			function () use ($message) {
-				$message->reply('Finished playing song.');
-			},
-			// Error
-			function ($e) use ($message) {
-				$message->reply("Error playing file: {$e->getMessage()}");
-			},
-			// Song Info
-			function ($meta) use ($message) {
-				$response = "**Song Info:**\r\n\r\n";
+		$bot->websocket->getVoiceClient($message->full_channel->guild_id)->then(function ($vc) use ($config, $params, $message) {
+			$message->reply('Playing song...');
 
-				$response .= "**Title:** {$meta['info']['title']}\r\n";
-				$response .= "**Artist:** {$meta['info']['artist']}\r\n";
-				$response .= "**Album:** {$meta['info']['album']}\r\n";
+			$vc->playFile($config['music_path'].'/'.$params)->then(
+				// Success
+				function () use ($message) {
+					$message->reply('Finished playing song.');
+				},
+				// Error
+				function ($e) use ($message) {
+					$message->reply("Error playing file: {$e->getMessage()}");
+				},
+				// Song Info
+				function ($meta) use ($message) {
+					$response = "**Song Info:**\r\n\r\n";
 
-				$message->channel->sendMessage($response);
+					$response .= "**Title:** {$meta['info']['title']}\r\n";
+					$response .= "**Artist:** {$meta['info']['artist']}\r\n";
+					$response .= "**Album:** {$meta['info']['album']}\r\n";
 
-				if (isset($meta['info']['cover'])) {
-					$filename = BOT_DIR.'/eval/'.Str::random().'.jpg';
+					$message->channel->sendMessage($response);
 
-					file_put_contents($filename, base64_decode($meta['info']['cover']));
+					if (isset($meta['info']['cover'])) {
+						$filename = BOT_DIR.'/eval/'.Str::random().'.jpg';
 
-					$message->channel->sendFile($filename, "Song Cover - {$meta['info']['title']}.jpg");
+						file_put_contents($filename, base64_decode($meta['info']['cover']));
+
+						$message->channel->sendFile($filename, "Song Cover - {$meta['info']['title']}.jpg");
+					}
 				}
-			}
-		);
+			);
+		}, function ($e) use ($message) {
+			$message->reply('Could not find an attached voice channel. Please run '.$config['prefix'].'voice <channel-name> before you try to play a song.');
+		});
 	}
 }

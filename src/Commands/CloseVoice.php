@@ -16,12 +16,11 @@ class CloseVoice
 	 */
 	public static function handleMessage($message, $params, $discord, $config, $bot)
 	{
-		if (!isset($bot->voice)) {
-			$message->reply('You must connect to a voice channel before closing it!');
-			return;
-		}
-
-		$bot->voice->close();
-		$message->reply('Leaving voice channel...');
+		$bot->websocket->getVoiceClient($message->full_channel->guild_id)->then(function ($vc) use ($message) {
+			$message->reply('Leaving voice channel...');
+			$vc->close();
+		}, function ($e) use ($message) {
+			$message->reply('Could not find a voice channel for this guild.');
+		});
 	}
 }

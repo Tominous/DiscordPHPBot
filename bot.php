@@ -7,26 +7,29 @@ define('BOT_DIR', __DIR__);
 use Bot\Bot;
 use Bot\Config;
 use Discord\Discord;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 
 include 'vendor/autoload.php';
 
 $opts = getopt('', ['config::']);
 $configfile = (isset($opts['config'])) ? $opts['config'] : $_SERVER['PWD'] . '/config.json';
 
-echo "DiscordPHPBot\r\n";
-echo "Loading config file from {$configfile}\r\n";
+$log = new Logger('DiscordPHP-Bot');
+$log->pushHandler(new StreamHandler('php://stdout', Logger::INFO));
+
+$log->addInfo('Starting DiscordPHPBot...');
+$log->addInfo("Loading config from {$configfile}...");
 
 try {
-	echo "Initilizing the bot...\r\n";
-	$bot = new Bot($configfile);
-	echo "Initilized bot.\r\n";
+	$bot = new Bot($configfile, $log);
 } catch (\Exception $e) {
-	echo "Could not initilize bot. {$e->getMessage()}\r\n";
+	$log->addError('Error while initilizing or running the bot.', ['message' => $e->getMessage()]);
 	die(1);
 }
 
 try {
-	echo "Loading commands...\r\n";
+	$log->addInfo('Initilizing commands...');
 
 	$bot->addCommand('help', \Bot\Commands\Help::class, 1, 'Shows the help command.', '');
 	$bot->addCommand('eval', \Bot\Commands\Evalu::class, 3, 'Evaluates some code.', '<code>');
@@ -48,11 +51,11 @@ try {
 	$bot->addCommand('khaled', \Bot\Commands\Khaled::class, 1, 'you special.', '');
 	$bot->addCommand('invite', \Bot\Commands\Invite::class, 2, 'Creates an invite for a guild.', '<guild-name>');
 
-	echo "Loaded commands.\r\n";
+	$log->addInfo('initilized all commands.');
 } catch (\Exception $e) {
-	echo "Could not load commands. {$e->getMessage()}\r\n";
+	$log->addInfo('Error while loading all commands.', ['message' => $e->getMessage()]);
 	die(1);
 }
 
-echo "Starting the bot...\r\n";
+$log->addInfo('Starting the bot...');
 $bot->start();

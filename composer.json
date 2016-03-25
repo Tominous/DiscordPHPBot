@@ -3,7 +3,8 @@
     "description": "An example bot that uses DiscordPHP",
     "require": {
         "team-reflex/discord-php": "dev-bot-api",
-        "symfony/var-dumper": "^3.0"
+        "symfony/var-dumper": "^3.0",
+        "monolog/monolog": "^1.18"
     },
     "authors": [
         {

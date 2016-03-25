@@ -9,6 +9,8 @@ use Discord\Cache\Drivers\RedisCacheDriver;
 use Discord\Discord;
 use Discord\WebSockets\Event;
 use Discord\WebSockets\WebSocket;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
@@ -50,15 +52,27 @@ class Bot
 	protected $configfile;
 
 	/**
+	 * Monolog logger.
+	 *
+	 * @var Logger The logger.
+	 */
+	protected $log;
+
+	/**
 	 * Constructs the bot instance.
 	 *
 	 * @param string $configfile 
+	 * @param Logger $log 
 	 * @return void 
 	 */
-	public function __construct($configfile)
+	public function __construct($configfile, $log)
 	{
 		$this->configfile = $configfile;
+		$this->log = $log;
+
 		$config = Config::getConfig($this->configfile);
+		$this->log->addInfo('Loaded config.', $config);
+
 		$this->discord = Discord::createWithBotToken($config['token']);
 		$this->websocket = new WebSocket($this->discord);	
 	}
@@ -115,7 +129,7 @@ class Bot
 				$content = $parts;
 
 				if ($content[0] == $config['prefix'] . $command) {
-					Arr::forget($content, 0);
+					array_shift($content);
 					$user_perms = @$config['perms']['perms'][$message->author->id];
 
 					if (empty($user_perms)) {
@@ -125,14 +139,18 @@ class Bot
 					if ($user_perms >= $data['perms']) {
 						try {
 							$data['class']::handleMessage($message, $content, $new, $config, $this);
-							$params = implode(' ', $content);
-							echo "[Command]: {$message->author->username} {$message->author} ran command '{$config['prefix']}{$command} {$params}'\r\n";
+							$this->log->addDebug("{$message->author->username}#{$message->author->discriminator} ({$message->author}) ran command {$config['prefix']}{$command}", $content);
 						} catch (\Exception $e) {
-							$message->reply("There was an error running the command. `{$e->getMessage()}`");
+							try {
+								$this->log->addError("Error running the command {$config['prefix']}{$command}", ['message' => $e->getMessage()]);
+								$message->reply("There was an error running the command. `{$e->getMessage()}`");
+							} catch (\Exception $e2) {}
 						}
 					} else {
-						$message->reply('You do not have permission to do this!');
-						echo "[Auth] User {$message->author->username} blocked from running {$config['prefix']}{$command}, <@{$message->author->id}>\r\n";
+						try {
+							$message->reply('You do not have permission to do this!');
+						} catch (\Exception $e2) {}
+						$this->log->addWarning("{$message->author->username}#{$message->author->discriminator} ({$message->author}) attempted to run command {$config['prefix']}{$command}", $content);
 					}
 				}
 			}
@@ -157,11 +175,12 @@ class Bot
 		});
 
 		$this->websocket->on('ready', function ($discord) {
+			$this->log->addInfo('WebSocket is ready.');
 			$discord->updatePresence($this->websocket, 'DiscordPHP '.Discord::VERSION, false);
 		});
 
 		$this->websocket->on('error', function ($error, $ws) {
-			echo "[Error] {$error}\r\n";
+			$this->log->addError("WebSocket encountered an error: {$error}", [$error]);
 		});
 
 		// $this->websocket->on('heartbeat', function ($epoch) {
@@ -169,21 +188,53 @@ class Bot
 		// });
 
 		$this->websocket->on('close', function ($op, $reason) {
-			echo "[Close] WebSocket was closed. Opcode {$op}\r\n";
-			echo "Reason: {$reason}\r\n";
+			$this->log->addWarning("WebSocket closed.", ['code' => $op, 'reason' => $reason]);
 		});
 
-		$this->websocket->on('reconnect', function () {
-			echo "Reconnecting\r\n";
+		$this->websocket->on('reconnecting', function () {
+			$this->log->addInfo('WebSocket is reconnecting...');
 		});
 
 		$this->websocket->on('reconnected', function () {
-			echo "Reconnected\r\n";
+			$this->log->addInfo('WebSocket has reconnected.');
 		});
 
 		$config = Config::getConfig($this->configfile);
-		if ($config['cache'] == 'redis') {
+		if (isset($config['cache']) && $config['cache'] == 'redis') {
 			Cache::setCache(new RedisCacheDriver('localhost'));
+		}
+
+		if (isset($config['carbon_bot']) && $config['carbon_bot']['enabled']) {
+			$guzzle = new Client(['http_errors' => false]);
+			$body = [
+				'key' => $config['carbon_bot']['key'],
+			];
+			$this->log->addInfo('Enabling Carbon server count updates...');
+
+			$carbonHeartbeat = function () use ($guzzle, &$body) {
+				$body['servercount'] = $this->discord->guilds->count();
+
+				$this->log->addDebug('Sending Carbon server count update...');
+
+				$request = new Request(
+					'POST',
+					'https://www.carbonitex.net/discord/data/botdata.php',
+					['Content-Type' => 'application/json'],
+					json_encode($body)
+				);
+
+				$response = $guzzle->send($request);
+
+				if ($response->getStatusCode() !== 200) {
+					$this->log->addWarning('Carbon server count update failed.', ['status' => $response->getStatusCode(), 'reason' => $response->getReasonPhrase()]);
+				} else {
+					$this->log->addDebug('Sent Carbon server count update successfully.');
+				}
+			};
+
+			$carbonHeartbeat();
+
+			$this->websocket->loop->addPeriodicTimer(60, $carbonHeartbeat);
 		}
 
 		$this->websocket->run();

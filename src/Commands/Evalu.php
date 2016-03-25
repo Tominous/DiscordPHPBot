@@ -35,7 +35,6 @@ class Evalu
 			$params = implode(' ', $params);
 			$params = str_replace('```', '', $params);
 			$params = "<?php\r\n".$params;
-			dump($params);
 
 			$fileName = BOT_DIR.'/eval/'.Str::random();
 

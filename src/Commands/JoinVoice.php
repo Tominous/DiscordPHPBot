@@ -26,8 +26,8 @@ class JoinVoice
 			return;
 		}
 
-		$guild = Guild::find($message->full_channel->guild_id);
-		$channel = $guild->channels->get('name', $params[1]);
+		$channelName = implode(' ', $params);
+		$channel = $message->full_channel->guild->channels->get('name', $channelName);
 
 		if (is_null($channel)) {
 			$message->reply('Couldn\'t find that channel!');
@@ -43,12 +43,6 @@ class JoinVoice
 				$vc->on('stderr', function ($data) use ($message) {
 					$message->channel->sendMessage("**stderr:** {$data}");
 				});
-
-				$vc->on('ws-ping', function ($t) {
-					echo "WS Ping: {$t}ms\r\n";
-				});
-
-				$bot->voice = $vc;
 			},
 			// Joining failed!
 			function ($e) use ($message) {
