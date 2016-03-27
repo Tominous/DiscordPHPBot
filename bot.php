@@ -50,6 +50,7 @@ try {
 	$bot->addCommand('closevoice', \Bot\Commands\CloseVoice::class, 1, 'Closes the voice connection.', '');
 	$bot->addCommand('khaled', \Bot\Commands\Khaled::class, 1, 'you special.', '');
 	$bot->addCommand('invite', \Bot\Commands\Invite::class, 2, 'Creates an invite for a guild.', '<guild-name>');
+	$bot->addCommand('fancy', \Bot\Commands\Fancy::class, 1, 'supa fancy', '<string>');
 
 	$log->addInfo('initilized all commands.');
 } catch (\Exception $e) {
