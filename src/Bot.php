@@ -174,6 +174,12 @@ class Bot
 			}
 		});
 
+		$this->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) {
+			if ($message->author->id == '81726071573061632' && strtolower($message->content) == 'we dem') {
+				$message->channel->sendMessage('BOIZ');
+			}
+		});
+
 		$this->websocket->on('ready', function ($discord) {
 			$this->log->addInfo('WebSocket is ready.');
 			$discord->updatePresence($this->websocket, 'DiscordPHP '.Discord::VERSION, false);
