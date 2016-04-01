@@ -17,7 +17,7 @@ class Join
 	{
 		if ($discord->bot) {
 			$appId = isset($config['app_id']) ? $config['app_id'] : '157746770539970560';
-			$message->reply("This bot can't accpet invites, sorry! Please use this OAuth invite link: https://discordapp.com/oauth2/authorize?client_id={$appId}&scope=bot");
+			$message->reply("This bot can't accpet invites, sorry! Please use this OAuth invite link: https://discordapp.com/oauth2/authorize?client_id={$appId}&scope=bot&permissions=36703232");
 
 			return;
 		}
