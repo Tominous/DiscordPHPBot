@@ -58,7 +58,7 @@ class Evalu
 			}
 
 			$message->reply("```\r\n{$response}\r\n```");
-		} catch (\Exception $e) {
+		} catch (\Throwable $e) {
 			$message->reply("Eval failed. {$e->getMessage()}");
 		}
 

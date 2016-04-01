@@ -140,16 +140,16 @@ class Bot
 						try {
 							$data['class']::handleMessage($message, $content, $new, $config, $this);
 							$this->log->addInfo("{$message->author->username}#{$message->author->discriminator} ({$message->author}) ran command {$config['prefix']}{$command}", $content);
-						} catch (\Exception $e) {
+						} catch (\Throwable $e) {
 							try {
 								$this->log->addError("Error running the command {$config['prefix']}{$command}", ['message' => $e->getMessage()]);
 								$message->reply("There was an error running the command. `{$e->getMessage()}`");
-							} catch (\Exception $e2) {}
+							} catch (\Throwable $e2) {}
 						}
 					} else {
 						try {
 							$message->reply('You do not have permission to do this!');
-						} catch (\Exception $e2) {}
+						} catch (\Throwable $e2) {}
 						$this->log->addWarning("{$message->author->username}#{$message->author->discriminator} ({$message->author}) attempted to run command {$config['prefix']}{$command}", $content);
 					}
 				}
