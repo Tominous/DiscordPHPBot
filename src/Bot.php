@@ -116,41 +116,43 @@ class Bot
 		$this->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) {
 			$config = Config::getConfig($this->configfile);
 
-			foreach ($this->commands as $command => $data) {
-				$parts = [];
-				$content = explode(' ', $message->content);
+			if (substr($message->content, 0, strlen($config['prefix'])) == $config['prefix']) {
+				foreach ($this->commands as $command => $data) {
+					$parts = [];
+					$content = explode(' ', $message->content);
 
-				foreach ($content as $index => $c) {
-					foreach (explode("\n", $c) as $p) {
-						$parts[] = $p;
-					}
-				}
-
-				$content = $parts;
-
-				if ($content[0] == $config['prefix'] . $command) {
-					array_shift($content);
-					$user_perms = @$config['perms']['perms'][$message->author->id];
-
-					if (empty($user_perms)) {
-						$user_perms = $config['perms']['default'];
-					}
-
-					if ($user_perms >= $data['perms']) {
-						try {
-							$data['class']::handleMessage($message, $content, $new, $config, $this);
-							$this->log->addInfo("{$message->author->username}#{$message->author->discriminator} ({$message->author}) ran command {$config['prefix']}{$command}", $content);
-						} catch (\Throwable $e) {
-							try {
-								$this->log->addError("Error running the command {$config['prefix']}{$command}", ['message' => $e->getMessage()]);
-								$message->reply("There was an error running the command. `{$e->getMessage()}`");
-							} catch (\Throwable $e2) {}
+					foreach ($content as $index => $c) {
+						foreach (explode("\n", $c) as $p) {
+							$parts[] = $p;
 						}
-					} else {
-						try {
-							$message->reply('You do not have permission to do this!');
-						} catch (\Throwable $e2) {}
-						$this->log->addWarning("{$message->author->username}#{$message->author->discriminator} ({$message->author}) attempted to run command {$config['prefix']}{$command}", $content);
+					}
+
+					$content = $parts;
+
+					if ($content[0] == $config['prefix'] . $command) {
+						array_shift($content);
+						$user_perms = @$config['perms']['perms'][$message->author->id];
+
+						if (empty($user_perms)) {
+							$user_perms = $config['perms']['default'];
+						}
+
+						if ($user_perms >= $data['perms']) {
+							try {
+								$data['class']::handleMessage($message, $content, $new, $config, $this);
+								$this->log->addInfo("{$message->author->username}#{$message->author->discriminator} ({$message->author}) ran command {$config['prefix']}{$command}", $content);
+							} catch (\Throwable $e) {
+								try {
+									$this->log->addError("Error running the command {$config['prefix']}{$command}", ['message' => $e->getMessage()]);
+									$message->reply("There was an error running the command. `{$e->getMessage()}`");
+								} catch (\Throwable $e2) {}
+							}
+						} else {
+							try {
+								$message->reply('You do not have permission to do this!');
+							} catch (\Throwable $e2) {}
+							$this->log->addWarning("{$message->author->username}#{$message->author->discriminator} ({$message->author}) attempted to run command {$config['prefix']}{$command}", $content);
+						}
 					}
 				}
 			}
