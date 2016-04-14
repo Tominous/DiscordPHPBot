@@ -188,7 +188,7 @@ class Bot
 		});
 
 		$this->websocket->on('error', function ($error, $ws) {
-			$this->log->addError("WebSocket encountered an error: {$error}", [$error]);
+			$this->log->addError("WebSocket encountered an error", [$error->getMessage()]);
 		});
 
 		// $this->websocket->on('heartbeat', function ($epoch) {
