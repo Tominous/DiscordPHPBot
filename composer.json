@@ -1,0 +1,24 @@
+{
+    "name": "david/discord-php-bot-v4",
+    "authors": [
+        {
+            "name": "David Cole",
+            "email": "david@team-reflex.com"
+        }
+    ],
+    "require": {
+    	"team-reflex/discord-php": "dev-master",
+        "nesbot/carbon": "^1.21"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bot\\": "src/"
+        }
+    },
+    "repositories": [
+    	{
+    		"type": "git",
+    		"url": "git@github.com:uniquoooo/DiscordPHP-Rewrite.git"
+    	}
+    ]
+}
