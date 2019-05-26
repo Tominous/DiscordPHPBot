@@ -104,14 +104,14 @@ class Bot
 	 */
 	public function start()
 	{
-		// set_error_handler(function ($errno, $errstr) {
-		// 	if (!(error_reporting() & $errno)) {
-		// 		return;
-		// 	}
+		 set_error_handler(function ($errno, $errstr) {
+		 	if (!(error_reporting() & $errno)) {
+		 		return;
+		 	}
 
-		// 	echo "[Error] {$errno} {$errstr}\r\n";
-		// 	throw new \Exception($errstr, $errno);
-		// }, E_ALL);
+		 	echo "[Error] {$errno} {$errstr}\r\n";
+		 	throw new \Exception($errstr, $errno);
+		 }, E_ALL);
 
 		$this->websocket->on(Event::MESSAGE_CREATE, function ($message, $discord, $new) {
 			$config = Config::getConfig($this->configfile);
@@ -191,9 +191,9 @@ class Bot
 			$this->log->addError("WebSocket encountered an error", [$error->getMessage()]);
 		});
 
-		// $this->websocket->on('heartbeat', function ($epoch) {
-		// 	echo "Heartbeat at {$epoch}\r\n";
-		// });
+		 $this->websocket->on('heartbeat', function ($epoch) {
+		 	echo "Heartbeat at {$epoch}\r\n";
+		 });
 
 		$this->websocket->on('close', function ($op, $reason) {
 			$this->log->addWarning("WebSocket closed.", ['code' => $op, 'reason' => $reason]);
